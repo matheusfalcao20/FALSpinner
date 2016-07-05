@@ -3,7 +3,7 @@ Simple Spinner write in Swift
 
 ## Example
 
-  In a hurry? Try out our [iOS Demo project]: FALSpinnerDemo in this repository.
+  In a hurry? Try out our FALSpinnerDemo in this repository.
 
 ## Installation
 
