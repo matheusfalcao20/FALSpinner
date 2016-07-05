@@ -1,20 +1,50 @@
 # FALSpinner
 Simple Spinner write in Swift
 
+## Example
+
+  In a hurry? Try out our [iOS Demo project]: FALSpinnerDemo in this repository.
+
 ## Installation
 
  Copy the file "FALSpinner.swift" inside your project.
  
 ## Code
  
- To user you have only to write this in your class:
+ To use is very simple, this is a example:
  
 ```
-    let spinner = DocPadSpinner(thisViewController: self)
     
-    spiner.startLoading()
+import UIKit
+
+class ViewController: UIViewController {
     
-    spiner.stopLoading()
+    var spinner : FALSpinner!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    
+        spinner = FALSpinner(thisViewController: self)
+        
+        spinner.startLoading()
+        
+        NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(ViewController.stopSpinner), userInfo: nil, repeats: false)
+        
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    func stopSpinner() {
+        
+        spinner.stopLoading()
+        
+    }
+    
+}
+
 ```
     
     
