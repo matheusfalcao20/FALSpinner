@@ -19,6 +19,8 @@ class ViewController: UIViewController {
         
         spinner.startLoading()
         
+        NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(ViewController.stopSpinner), userInfo: nil, repeats: false)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,7 +28,11 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    func stopSpinner() {
+        
+        spinner.stopLoading()
+        
+    }
     
 }
 
