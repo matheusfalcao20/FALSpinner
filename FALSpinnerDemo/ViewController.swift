@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(ViewController.stopSpinner), userInfo: nil, repeats: false)
         
     }
-    
+
     func stopSpinner() {
         
         spinner.stopLoading()
