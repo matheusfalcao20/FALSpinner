@@ -9,15 +9,11 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
-    var spinner : FALSpinner!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        spinner = FALSpinner(thisViewController: self)
         
-        spinner.startLoading()
+        startLoading()
         
         NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(ViewController.stopSpinner), userInfo: nil, repeats: false)
         
@@ -25,7 +21,7 @@ class ViewController: UIViewController {
 
     func stopSpinner() {
         
-        spinner.stopLoading()
+        stopLoading()
         
     }
     
