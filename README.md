@@ -13,7 +13,7 @@ Simple Spinner write in Swift
  
  To use is very simple, this is a example:
  
-```
+```swift
     
 import UIKit
 
