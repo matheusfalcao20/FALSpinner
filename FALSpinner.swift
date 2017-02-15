@@ -1,9 +1,7 @@
 //
 //  FALSpinner.swift
-//  FALSpinnerDemo
 //
-//  Created by Matheus Falcão on 07/04/16.
-//  Copyright © 2016 Falcão. All rights reserved.
+//  Created by Matheus Falcão.
 //
 
 import UIKit
