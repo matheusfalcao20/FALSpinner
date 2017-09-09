@@ -1,7 +1,9 @@
 //
 //  FALSpinner.swift
+//  FALSpinnerDemo
 //
-//  Created by Matheus Falcão.
+//  Created by Matheus Falcão on 07/04/16.
+//  Copyright © 2016 Falcão. All rights reserved.
 //
 
 import UIKit
@@ -15,7 +17,7 @@ extension UIViewController {
     var spinner: FALSpinner {
         get {
             return associatedObject(self, key: &spinnerKey)
-            { return FALSpinner() } // Set the initial value of the var
+            { return FALSpinner() }
         }
         set { associateObject(self, key: &spinnerKey, value: newValue) }
     }
@@ -40,9 +42,9 @@ extension UIViewController {
 
 class FALSpinner {
     
-    private var background: UIView!
-    private var loaded: Bool! = false
-    private var loader: UIActivityIndicatorView!
+    fileprivate var background: UIView!
+    fileprivate var loaded: Bool! = false
+    fileprivate var loader: UIActivityIndicatorView!
     
     var dark_alpha : CGFloat = 0.75
     var start_seconds_delay : Double = 1
@@ -76,16 +78,16 @@ class FALSpinner {
         let width = viewController.view.frame.width
         let height = viewController.view.frame.height
         
-        loader = UIActivityIndicatorView(frame: CGRectMake(0,0, width, height))
-        loader.contentMode = UIViewContentMode.Center
-        loader.hidden = true
+        loader = UIActivityIndicatorView(frame: CGRect(x: 0,y: 0, width: width, height: height))
+        loader.contentMode = UIViewContentMode.center
+        loader.isHidden = true
         loader.hidesWhenStopped = true
-        loader.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.WhiteLarge
+        loader.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
         
-        background = UIView(frame: CGRectMake(0,0, width, height))
-        background.backgroundColor = UIColor.blackColor()
+        background = UIView(frame: CGRect(x: 0,y: 0, width: width, height: height))
+        background.backgroundColor = UIColor.black
         background.alpha = 0.75
-        background.hidden = true
+        background.isHidden = true
         
     }
     
@@ -102,14 +104,14 @@ class FALSpinner {
         
         loaded = true
         
-        loader.hidden = false
-        background.hidden = false
+        loader.isHidden = false
+        background.isHidden = false
         
         if fade {
             
             background.alpha = 0
             
-            UIView.animateWithDuration(start_seconds_delay, animations: {
+            UIView.animate(withDuration: start_seconds_delay, animations: {
                 self.background.alpha = self.dark_alpha
             })
             
@@ -122,21 +124,21 @@ class FALSpinner {
     func stopLoading() {
         
         if (loaded == true){
-            loader.hidden = true
+            loader.isHidden = true
             
             if fade {
              
-                UIView.animateWithDuration(stop_seconds_delay, animations: {
+                UIView.animate(withDuration: stop_seconds_delay, animations: {
                     self.background.alpha = 0
                     }, completion: {
                         (value: Bool) in
-                        self.background.hidden = true
+                        self.background.isHidden = true
                         self.background.removeFromSuperview()
                 })
                 
             } else {
                 
-                self.background.hidden = true
+                self.background.isHidden = true
                 self.background.removeFromSuperview()
                 
             }
@@ -152,7 +154,7 @@ class FALSpinner {
 }
 
 func associatedObject<ValueType: AnyObject>(
-    base: AnyObject,
+    _ base: AnyObject,
     key: UnsafePointer<UInt8>,
     initialiser: () -> ValueType)
     -> ValueType {
@@ -165,7 +167,7 @@ func associatedObject<ValueType: AnyObject>(
 }
 
 func associateObject<ValueType: AnyObject>(
-    base: AnyObject,
+    _ base: AnyObject,
     key: UnsafePointer<UInt8>,
     value: ValueType) {
     objc_setAssociatedObject(base, key, value,
